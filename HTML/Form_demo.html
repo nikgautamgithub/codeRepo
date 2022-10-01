@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/tab-switching.css">
+  <title>WMS</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 1rem;
+    }
+
+    /* VARIABLES */
+    :root {
+      --nav-bg-lime: rgb(129, 209, 43, 90%);
+      --primary-white: rgb(255, 255, 255, 70%);
+      --heading-violet: #774977;
+      --dark-color: #5a555c;
+    }
+
+    body {
+      background-image: url('https://bit.ly/3UQS30S');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    /* NAVBAR/HEADER */
+    .header {
+      padding: 1.5rem 3rem 1.5rem 1rem;
+      height: 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--nav-bg-lime);
+    }
+
+    .navbar {
+      height: 1.3rem;
+    }
+
+    .navbar-lst {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
+    }
+
+    .navbar-link:link,
+    .navbar-link:visited {
+      display: inline-block;
+      font-size: 1rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: white;
+      transition: all 0.3s;
+    }
+
+    .navbar-link:hover,
+    .navbar-link:active {
+      color: var(--heading-violet);
+    }
+
+    .logo {
+      width: auto;
+      height: inherit;
+      border-radius: 50%;
+    }
+
+    /* CLIENT'S PORTAL FORM */
+
+    .formcont {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .formone,
+    .formtwo {
+      border: 2px solid violet;
+      border-radius: 1%;
+      width: 50%;
+      height: 100%;
+      margin: 3% 1%;
+      padding: 20px;
+    }
+
+    .formheading {
+      font-size: larger;
+      color: var(--heading-violet);
+      text-align: center;
+    }
+
+    .formcont input {
+      background-color: var(--primary-white);
+      accent-color: var(--nav-bg-lime);
+      border: 1px solid var(--dark-color);
+      border-radius: 2%;
+    }
+
+    #submitclient {
+      font-size: 15px;
+      padding: 10px 30px;
+      color: var(--dark-color);
+      background-color: var(--primary-white);
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 2px;
+      border: 1px solid var(--dark-color);
+      border-radius: 5%;
+      transition: background-color 0.5s linear;
+    }
+
+    #submitclient:hover {
+      color: var(--primary-white);
+      background-color: var(--dark-color);
+      border: 1px solid var(--primary-white);
+
+    }
+
+    #fname,
+    #fcaddr,
+    #fpickupdatetime,
+    #fwamt,
+    #wsnap,
+    #zpcode {
+      padding: 2px;
+      outline: none;
+    }
+
+    #fcaddr,
+    #zpcode {
+      margin: 0 0 0 18px;
+    }
+
+    #zpcode {
+      margin: 0 0 0 9px;
+    }
+
+    #fpickupdatetime {
+      margin: 0 0 0 10px;
+    }
+
+    #fwamt {
+      margin: 0 0 0 10px;
+    }
+
+    #wsnap {
+      margin: 0 0 0 10px;
+    }
+
+    /* PIckup Details */
+
+    [data-tab-content] {
+      display: none;
+    }
+
+    .active[data-tab-content] {
+      display: block;
+      padding-bottom: 80px;
+    }
+
+    .formtwo {
+      /* background-color: var(--primary-white); */
+      padding: 20px;
+    }
+
+    .formtwo h1 {
+      margin: 0;
+      font-size: larger;
+      padding-bottom: 10px;
+    }
+
+    .tabs {
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .tab {
+      /* background-color: var(--primary-white); */
+      cursor: pointer;
+      padding: 10px;
+      margin: 0;
+    }
+
+    .tab.active {
+      background-color: rgba(255, 255, 255, 50%);
+      color: #774977;
+      font-weight: 700;
+    }
+
+    .tab-switching {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 50%);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR/HEADER -->
+  <header class="header">
+    <img src="https://bit.ly/3LHsOtD" alt="Aesthetic Coffee" class="logo">
+    <nav class="navbar">
+      <ul class="navbar-lst">
+        <li><a href="#" class="navbar-link">Home</a></li>
+        <li><a href="#" class="navbar-link">About</a></li>
+        <li><a href="#" class="navbar-link">Service</a></li>
+        <li><a href="https://instagram.com/anshu.ck" class="navbar-link" target="_blank">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CLIENT'S PORTAL FORM -->
+  <div class="formcont">
+    <form class="formone" action="#">
+      <h2 class="formheading">Schedule A Pickup</h2><br>
+      <hr><br>
+      <label for="fname">Your name:</label>
+      <input type="text" id="fname" name="cname" value="" placeholder="Name" required><br><br>
+      <label for="fcaddr">Address:</label>
+      <input type="text" id="fcaddr" name="caddr" value="" placeholder="123 ABC" required><br><br>
+      <label for="fzcode">Zip-Code:</label>
+      <input type="number" id="zpcode" name="zcode" value="" placeholder="846234" required><br><br>
+      <label for="fpickupdatetime">Schedule Pickup (Date & Time):</label>
+      <input type="datetime-local" id="fpickupdatetime" name="pickupdatetime" min="2022-09-27T12:00" required><br><br>
+      <label for="fwcateg">Waste Category:</label>
+      <input type="radio" id="rwcateg" name="wcateg" value="Renewable Waste" required>
+      <label for="rwcateg">Renewable Waste</label>
+      <input type="radio" id="nrwcateg" name="wcateg" value="Non-Renewable Waste" required>
+      <label for="nrwcateg">Non-Renewable Waste</label><br><br>
+      <label for="fwamt">Waste Amount(in KG):</label>
+      <input type="number" id="fwamt" name="wamt" value="" placeholder="10"><br><br>
+      <label for="wsnap">Snap/Picture of Waste (Optional):</label>
+      <input type="file" id="wsnap" name="wpic" accept="image/png, image/jpeg, image/jpg"><br><br>
+
+      <input id="submitclient" type="submit" value="Submit">
+    </form>
+
+    <form class="formtwo" action="">
+      <ul class="tabs">
+        <li data-tab-target="#previous-pickups" class="tab">Past Pickups</li>
+        <li data-tab-target="#present-history" class="active tab">Upcoming Pickups</li>
+      </ul>
+      <hr>
+      <div class="tab-switching">
+        <div id="previous-pickups" data-tab-content>
+          <h1>Past Pickups</h1>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea quaerat corrupti fugiat odit impedit labore
+            corporis non nobis. Placeat tempore dolorem maiores alias reprehenderit ratione accusamus expedita nam
+            repellendus suscipit.</p>
+        </div>
+        <div id="present-history" data-tab-content class="active">
+          <h1>Upcoming Pickups</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus dicta, similique quae earum
+            laboriosam numquam consequuntur, magni placeat suscipit dolorum nobis illo odit? Suscipit, ea! Aspernatur
+            architecto asperiores corrupti officiis.</p>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script>
+    const tabs = document.querySelectorAll('[data-tab-target')
+    const tabContents = document.querySelectorAll('[data-tab-content')
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = document.querySelector(tab.dataset.tabTarget)
+        tabContents.forEach(tabContent => {
+          tabContent.classList.remove('active')
+        })
+        tabs.forEach(tab => {
+          tab.classList.remove('active')
+        })
+        tab.classList.add('active')
+        target.classList.add('active')
+      })
+    })
+  </script>
+</body>
+
+</html>
